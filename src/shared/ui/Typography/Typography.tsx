@@ -1,15 +1,15 @@
-import React from 'react';
-import { Typography as TypographyStyled } from './styles';
+import React from 'react'
+import { Typography as TypographyStyled } from './styles'
 
-export type TypographyVariant = 'headline1' | 'headline2' | 'title' | 'text' | 'smallText';
-export type TypographyFontWeight = 'regular' | 'medium' | 'bold';
+export type TypographyVariant = 'headline1' | 'headline2' | 'title' | 'text' | 'smallText'
+export type TypographyFontWeight = 'regular' | 'medium' | 'bold'
 
 export interface TypographyProps {
-  variant?: TypographyVariant;
-  fontWeight?: TypographyFontWeight;
-  color?: string;
-  as?: keyof React.JSX.IntrinsicElements;
-  children?: React.ReactNode;
+  variant?: TypographyVariant
+  fontWeight?: TypographyFontWeight
+  color?: string
+  as?: keyof React.JSX.IntrinsicElements
+  children?: React.ReactNode
 }
 
 export const Typography = ({
@@ -23,5 +23,5 @@ export const Typography = ({
     <TypographyStyled variant={variant} fontWeight={fontWeight} color={color} as={as}>
       {children}
     </TypographyStyled>
-  );
-};
+  )
+}
