@@ -38,7 +38,7 @@ npm install -D @emotion/babel-plugin @eslint/js @types/node @types/react @types/
   "version": "2.2.0",
   "type": "module",
   "scripts": {
-    "start": "vite",
+    "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
@@ -394,7 +394,6 @@ export const envConfig = {
   BASE_URL: import.meta.env.VITE_REACT_APP_BASE_URL,
   PORT: import.meta.env.VITE_PORT,
   BOT_NAME: import.meta.env.VITE_REACT_APP_TG_AUTH_BOT_NAME,
-  MAPTILER_KEY: import.meta.env.VITE_REACT_APP_MAPTILER_KEY,
   SUPPORT_LINK: import.meta.env.VITE_REACT_APP_SUPPORT_LINK,
   VITE_REACT_RELEASE_VERSION: import.meta.env.VITE_REACT_RELEASE_VERSION,
 };

@@ -1,22 +1,22 @@
-import styled from '@emotion/styled'
+import styled from '@emotion/styled';
 
 export interface BoxStylesProps {
-  display?: string
-  justifyContent?: string
-  alignItems?: string
-  flexDirection?: string
-  flexWrap?: string
-  width?: string | number
-  height?: string | number
-  maxWidth?: string | number
-  flex?: string | number
-  mt?: string | number
-  mb?: string | number
-  ml?: string | number
-  mr?: string | number
-  m?: string | number
-  rowGap?: string | number
-  columnGap?: string | number
+  display?: string;
+  justifyContent?: string;
+  alignItems?: string;
+  flexDirection?: string;
+  flexWrap?: string;
+  width?: string | number;
+  height?: string | number;
+  maxWidth?: string | number;
+  flex?: string | number;
+  mt?: string | number;
+  mb?: string | number;
+  ml?: string | number;
+  mr?: string | number;
+  m?: string | number;
+  rowGap?: string | number;
+  columnGap?: string | number;
 }
 
 export const Box = styled.div<BoxStylesProps>((props) => ({
@@ -36,4 +36,4 @@ export const Box = styled.div<BoxStylesProps>((props) => ({
   margin: typeof props.m === 'number' ? `${props.m}px` : props.m,
   rowGap: typeof props.rowGap === 'number' ? `${props.rowGap}px` : props.rowGap,
   columnGap: typeof props.columnGap === 'number' ? `${props.columnGap}px` : props.columnGap,
-}))
+}));
