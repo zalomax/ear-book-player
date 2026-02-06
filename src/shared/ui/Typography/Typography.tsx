@@ -1,3 +1,4 @@
+import React from 'react';
 import { Typography as TypographyStyled } from './styles';
 
 export type TypographyVariant = 'headline1' | 'headline2' | 'title' | 'text' | 'smallText';
@@ -7,7 +8,7 @@ export interface TypographyProps {
   variant?: TypographyVariant;
   fontWeight?: TypographyFontWeight;
   color?: string;
-  as?: keyof JSX.IntrinsicElements;
+  as?: keyof React.JSX.IntrinsicElements;
   children?: React.ReactNode;
 }
 
