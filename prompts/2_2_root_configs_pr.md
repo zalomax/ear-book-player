@@ -187,7 +187,7 @@ export default tseslint.config(
 ### 3.4 .prettierrc.json
 ```json
 {
-    "semi": true,
+    "semi": false,
     "tabWidth": 2,
     "printWidth": 120,
     "singleQuote": true,
