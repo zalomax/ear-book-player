@@ -55,53 +55,51 @@ npm install -D @emotion/babel-plugin @eslint/js @types/node @types/react @types/
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@floating-ui/react": "^0.27.8",
-    "@hookform/resolvers": "^5.0.1",
-    "@maptiler/sdk": "^3.0.1",
-    "@tanstack/react-query": "^5.74.4",
+    "@hookform/resolvers": "^5.0.1",    
+    "@tanstack/react-query": "^5.90.20",
     "@telegram-auth/react": "^1.0.4",
     "@types/lodash": "^4.17.16",
     "dotenv": "^16.5.0",
-    "i18next": "^25.0.0",
+    "i18next": "^25.8.4",
     "i18next-http-backend": "^3.0.2",
     "lodash": "^4.17.21",
-    "motion": "^12.7.4",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-dropzone": "^14.3.8",
-    "react-easy-crop": "^5.5.0",
-    "react-error-boundary": "^5.0.0",
-    "react-hook-form": "^7.55.0",
-    "react-i18next": "^15.4.1",
-    "react-router": "^7.5.1",
-    "react-select": "^5.10.1",
-    "react-swipeable": "^7.0.2",
+    "motion": "^12.33.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-dropzone": "^14.4.0",
+    "react-easy-crop": "^5.5.6",
+    "react-error-boundary": "^6.1.0",
+    "react-hook-form": "^7.71.1",
+    "react-i18next": "^16.5.4",
+    "react-router": "^7.13.0",
+    "react-select": "^5.10.2",    
     "react-toastify": "^11.0.5",
     "react-transition-group": "^4.4.5",
-    "swiper": "^11.2.6",
-    "uuid": "^11.1.0",
-    "yup": "^1.6.1"
+    "swiper": "^12.1.0",
+    "uuid": "^13.0.0",
+    "yup": "^1.7.1"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.13.5",
-    "@eslint/js": "^9.24.0",
-    "@types/node": "^22.14.1",
-    "@types/react": "19.1.0",
-    "@types/react-dom": "19.1.0",
+    "@eslint/js": "^9.39.2",
+    "@types/node": "^25.2.1",
+    "@types/react": "19.2.13",
+    "@types/react-dom": "19.2.3",
     "@types/react-transition-group": "^4.4.12",
-    "@vitejs/plugin-react": "^4.4.0",
-    "eslint": "^9.24.0",
-    "eslint-config-prettier": "^10.1.2",
-    "eslint-plugin-prettier": "^5.2.6",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.19",
-    "globals": "^16.0.0",
-    "prettier": "3.5.3",
-    "stylelint": "^16.10.0",
-    "stylelint-config-standard": "^38.0.0",
-    "typescript": "~5.8.3",
-    "typescript-eslint": "^8.30.1",
-    "vite": "^6.3.2",
-    "vite-plugin-svgr": "^4.3.0"
+    "@vitejs/plugin-react": "^5.1.3",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.5.0",
+    "globals": "^17.3.0",
+    "prettier": "3.8.1",
+    "stylelint": "^17.1.1",
+    "stylelint-config-standard": "^40.0.0",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.54.0",
+    "vite": "^7.3.1",
+    "vite-plugin-svgr": "^4.5.0"
   }
 }
 ```
@@ -236,7 +234,6 @@ VITE_REACT_APP_TG_AUTH_BOT_NAME=TELEGRAM_BOT_NAME
 VITE_REACT_APP_MAPTILER_KEY=API_KEY
 NGINX_DOMAIN_SERVER_NAME=test.com
 VITE_REACT_APP_BASE_URL_PREFIX=''
-VITE_REACT_APP_SUPPORT_LINK=https://t.me/pikvik_support
 VITE_REACT_RELEASE_VERSION = 2.2.0
 ```
 
@@ -387,78 +384,6 @@ Thumbs.db
 
 ## 4. Исходные файлы
 
-### 4.1 src/main.tsx
-```typescript
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router';
-import { AppQueryClient } from './app/AppQueryClient/AppQueryClient.tsx';
-import './index.css';
-
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <BrowserRouter>
-      <AppQueryClient />
-    </BrowserRouter>
-  </StrictMode>
-);
-```
-
----
-
-### 4.2 src/App.tsx
-```typescript
-import { Route, Routes } from 'react-router';
-import { LoginPage } from './bundle/Login/LoginPage.tsx';
-import { UnAuthorisedLayout } from './shared/ui/UnAuthorisedLayout/UnAuthorisedLayout.tsx';
-import { ProtectedLayout } from './shared/ui/ProtectedLayout/ProtectedLayout.tsx';
-import { getLoginPath } from './bundle/Login/urls/getLoginUrl.ts';
-import { getProfilePath } from './bundle/Profile/urls/getProfileUrls.ts';
-import { ProfilePage } from './bundle/Profile/ProfilePage.tsx';
-import { getCreateAdvertisementPath } from './bundle/Advertisement/_create/urls/getCreateAdvertisementUrl.ts';
-import { CreateAdvertisementPage } from './bundle/Advertisement/_create/CreateAdvertisementPage.tsx';
-import { SearchPage } from './bundle/Search/SearchPage.tsx';
-import { getSearchPath } from './bundle/Search/urls/getSearchUrls.ts';
-import { getAboutPath } from './bundle/About/urls/getSearchUrls.ts';
-import AboutPage from './bundle/About/AboutPage.tsx';
-import { getMapPagePath } from '@/bundle/MapPage/urls/getMapPageUrls.ts';
-import { MapPage } from '@/bundle/MapPage/MapPage.tsx';
-import { getMyAdvertisementsPath } from './bundle/MyAdvertisements.tsx/urls/getMyAdvertisementsUrl.ts';
-import { MyAdvertisementsPage } from './bundle/MyAdvertisements.tsx/MyAdvertisementsPage.tsx';
-import { getAdvertisementDetailsPath } from '@/bundle/Advertisement/_details/urls/getAdvertisementDetailsUrl.ts';
-import { AdvertisementDetailsPage } from '@/bundle/Advertisement/_details/AdvertisementDetailsPage.tsx';
-import { getEditProfilePath } from '@/bundle/Profile/EditProfile/urls/getEditProfileUrls.ts';
-import { EditProfilePage } from '@/bundle/Profile/EditProfile/EditProfilePage.tsx';
-import { getEditAdvertisementPath } from '@/bundle/Advertisement/_edit/urls/getEditAdvertisementUrl.ts';
-import { EditAdvertisementPage } from '@/bundle/Advertisement/_edit/EditAdvertisementPage.tsx';
-import NotFoundPage from './bundle/NotFound/NotFoundPage.tsx';
-
-export const App = () => {
-  return (
-    <Routes>
-      {/*UNAUTHORIZED ROUTE*/}
-      <Route element={<UnAuthorisedLayout />}>
-        <Route path={getLoginPath()} element={<LoginPage />} />
-        <Route path={getAboutPath()} element={<AboutPage />} />
-      </Route>
-
-      {/*AUTHORIZED ROUTE*/}
-      <Route element={<ProtectedLayout />}>
-        <Route path={getSearchPath()} element={<SearchPage />} />
-        <Route path={getProfilePath()} element={<ProfilePage />} />
-        <Route path={getEditProfilePath()} element={<EditProfilePage />} />
-        <Route path={getCreateAdvertisementPath()} element={<CreateAdvertisementPage />} />
-        <Route path={getMyAdvertisementsPath()} element={<MyAdvertisementsPage />} />
-        <Route path={getMapPagePath()} element={<MapPage />} />
-        <Route path={getAdvertisementDetailsPath()} element={<AdvertisementDetailsPage />} />
-        <Route path={getEditAdvertisementPath()} element={<EditAdvertisementPage />} />
-        <Route path='*' element={<NotFoundPage />} />
-      </Route>
-    </Routes>
-  );
-};
-```
-
 ---
 
 ### 4.3 src/envConfig.ts
@@ -477,111 +402,6 @@ export const envConfig = {
 
 ---
 
-### 4.4 i18n.config.ts
-```typescript
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import HttpApi from 'i18next-http-backend';
-
-import commonEn from './src/locales/en/common.json';
-import commonRu from './src/locales/ru/common.json';
-import commonBy from './src/locales/be/common.json';
-import commonGe from './src/locales/ka/common.json';
-import commonUa from './src/locales/uk/common.json';
-
-import loginEn from './src/locales/en/login.json';
-import loginRu from './src/locales/ru/login.json';
-import loginBy from './src/locales/be/login.json';
-import loginGe from './src/locales/ka/login.json';
-import loginUa from './src/locales/uk/login.json';
-
-import aboutUsEn from './src/locales/en/about_us.json';
-import aboutUsRu from './src/locales/ru/about_us.json';
-import aboutUsBy from './src/locales/be/about_us.json';
-import aboutUsGe from './src/locales/ka/about_us.json';
-import aboutUsUa from './src/locales/uk/about_us.json';
-
-import advertisementEn from './src/locales/en/advertisement.json';
-import advertisementRu from './src/locales/ru/advertisement.json';
-import advertisementBy from './src/locales/be/advertisement.json';
-import advertisementGe from './src/locales/ka/advertisement.json';
-import advertisementUa from './src/locales/uk/advertisement.json';
-
-import formEn from './src/locales/en/form.json';
-import formRu from './src/locales/ru/form.json';
-import formBy from './src/locales/be/form.json';
-import formGe from './src/locales/ka/form.json';
-import formUa from './src/locales/uk/form.json';
-
-
-import mapEn from './src/locales/en/map.json';
-import mapRu from './src/locales/ru/map.json';
-import mapBy from './src/locales/be/map.json';
-import mapGe from './src/locales/ka/map.json';
-import mapUa from './src/locales/uk/map.json';
-
-import profileEn from './src/locales/en/profile.json';
-import profileRu from './src/locales/ru/profile.json';
-import profileBy from './src/locales/be/profile.json';
-import profileGe from './src/locales/ka/profile.json';
-import profileUa from './src/locales/uk/profile.json';
-
-import errorEn from './src/locales/en/error.json';
-import errorRu from './src/locales/ru/error.json';
-import errorBe from './src/locales/be/error.json';
-import errorKa from './src/locales/ka/error.json';
-import errorUk from './src/locales/uk/error.json';
-
-import { LANGUAGE, LANGUAGE_LOCALES } from '@/shared/dictianary/const.ts';
-import { localStorageService } from '@/helpers/storageHelpers.ts';
-
-const resources = {
-  en: {
-    translation: { ...commonEn, ...loginEn, ...aboutUsEn, ...advertisementEn, ...formEn, ...mapEn, ...profileEn, ...errorEn },
-  },
-  ru: {
-    translation: { ...commonRu, ...loginRu, ...aboutUsRu, ...advertisementRu, ...formRu, ...mapRu, ...profileRu, ...errorRu },
-  },
-    be: {
-    translation: { ...commonBy, ...loginBy, ...aboutUsBy, ...advertisementBy, ...formBy, ...mapBy, ...profileBy, ...errorBe },
-  },
- ka: {
-    translation: { ...commonGe, ...loginGe, ...aboutUsGe, ...advertisementGe, ...formGe, ...mapGe, ...profileGe, ...errorKa }
-  },
- uk: {
-    translation: { ...commonUa, ...loginUa, ...aboutUsUa, ...advertisementUa, ...formUa, ...mapUa, ...profileUa, ...errorUk }
-  }
-};
-
-const supportedLngs = Object.keys(resources);
-
-const resolveLanguage = (): string => {
-  const selectedLanguage = localStorageService.get(LANGUAGE);
-  if (selectedLanguage && supportedLngs.includes(selectedLanguage)) {
-    return selectedLanguage;
-  }
-
-  if (supportedLngs.includes(navigator.language)) {
-  return navigator.language;
-  }
-
-  return LANGUAGE_LOCALES.RU;
-};
-
-i18n
-  .use(HttpApi)
-  .use(initReactI18next)
-  .init({
-    fallbackLng:resolveLanguage(),
-    resources,
-    interpolation: { escapeValue: false },
-  });
-
-export default i18n;
-```
-
----
-
 ## 5. Публичные файлы
 
 ### 5.1 index.html
@@ -594,9 +414,9 @@ export default i18n;
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=0" />
     <meta name="format-detection" content="telephone=no">
     <link rel="icon" href="/favicon.ico" />
-    <script src="https://telegram.org/js/telegram-web-app.js?57"></script>
-    <meta name="description" content="РўРµС…РЅРѕР»РѕРіРёС‡РЅС‹Р№ СЃРµСЂРІРёСЃ РґР»СЏ РїРѕРёСЃРєР° РѕР±СЉСЏРІР»РµРЅРёР№ РѕР± Р°СЂРµРЅРґРµ Рё РїСЂРѕРґР°Р¶Рµ РЅРµРґРІРёР¶РёРјРѕСЃС‚Рё" />
-    <title>PikVik - Р’Р°С€ РїСѓС‚РµРІРѕРґРёС‚РµР»СЊ РЅРµРґРІРёР¶РёРјРѕСЃС‚Рё!</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <meta name="description" content="Плеер для прослушивания аудиокниг" />
+    <title>Плеер для прослушивания аудиокниг</title>
   </head>
 
   <body>
@@ -614,16 +434,6 @@ export default i18n;
 # The following redirect is intended for use with most SPAs that handle routing internally.
 /*    /index.html   200
 ```
-
----
-
-### 5.3 docker/robots.txt/dev_staging.txt
-```
-User-agent: *
-Disallow: /
-```
-
----
 
 ## 6. HTTPS настройка для локальной разработки
 
@@ -761,8 +571,6 @@ npm run format-css
 - Проект использует React 19 с новыми возможностями
 - Все пути импорта используют алиас `@` для `src/`
 - Для работы с Telegram Web App необходимо подключить скрипт в index.html
-- Проект поддерживает 5 языков: английский, русский, белорусский, грузинский, украинский
 - Для HTTPS в режиме разработки требуются самоподписные сертификаты в `.eggs/vite-https/`
 - Проект использует Emotion для стилизации с поддержкой CSS-in-JS
 - React Query используется для управления состоянием API и кэширования
-- i18next настроен для работы с 5 языками и автоматического определения языка пользователя
